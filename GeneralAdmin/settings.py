@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogs',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
@@ -105,9 +107,13 @@ AUTH_PASSWORD_VALIDATORS = [
 
 SUIT_CONFIG = {
     'ADMIN_NAME': '后台管理系统',
-    'LIST_PER_PAGE': 20,
+    'LIST_PER_PAGE': 10,
+    'MENU': ({'label': u'用户管理', 'app': 'auth',
+              'models': ('auth.User', 'auth.Group')},
+             {'label': u'博客', 'app': 'blogs',
+              'models': ('blogs.Category', 'blogs.Tag', 'blogs.Blog','blogs.Comment')},
+             ),
 }
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
 
@@ -117,7 +123,7 @@ TIME_ZONE = 'Asia/Shanghai'
 
 USE_I18N = True
 
-USE_L10N = False
+USE_L10N = True
 
 USE_TZ = False
 
@@ -130,3 +136,10 @@ DATE_FORMAT = 'Y-m-d'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+CKEDITOR_UPLOAD_PATH = 'upload/'
+CKEDITOR_IMAGE_BACKEND = 'pillow'
