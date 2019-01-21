@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}通用模板{% endblock %}</title>
+    <link rel="shortcut icon" href="{%static "images/blogs/pandas.png"  %}" />
+    <link href="{% static 'blogs/css/base.css' %}" rel="stylesheet">
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+
+
+
+
+{% block content %}{% endblock %}
+</body>
+</html>
