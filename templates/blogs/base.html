@@ -5,15 +5,25 @@
     <meta charset="utf-8">
     <title>{% block title %}通用模板{% endblock %}</title>
     <link rel="shortcut icon" href="{%static "images/blogs/pandas.png"  %}" />
-    <link href="{% static 'blogs/css/base.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% block css %}{% endblock %}
 </head>
-<body>
-
-
-
-
-
+<body style="padding-top:40px;background-image:url({%static "images/blogs/back.jpeg" %});">
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <p class="navbar-text">NameNul博客</p>
+        <div class="collapse navbar-collapse" id="my-nav">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">博客主页</a></li>
+                <li><a href="#">关于作者</a></li>
+                <li><a href="#">登录</a></li>
+                <li><a href="#">注册</a></li>
+            </ul>
+        </div>
+      </div>
+    </nav>
 {% block content %}{% endblock %}
 </body>
 </html>
