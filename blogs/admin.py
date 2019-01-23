@@ -13,7 +13,7 @@ class TagAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ('title','author','category','标签','pub')
+    list_display = ('title','author','category','标签','pub','image')
     search_fields = ('title',)
     list_filter = ('category','tag','pub')
 

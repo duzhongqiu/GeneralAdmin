@@ -27,6 +27,7 @@ class Blog(models.Model):
     pub = models.DateField('发布时间',auto_now_add=True)
     category = models.ForeignKey(Category,verbose_name='栏目',on_delete=models.CASCADE)#多对一（博客-类别）
     tag = models.ManyToManyField(Tag,verbose_name='标签')
+    image = models.ImageField(upload_to='blogimg', verbose_name='图片', null=True)
 
     def 标签(self):
         return [tag.name for tag in self.tag.all()]
