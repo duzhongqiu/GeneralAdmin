@@ -111,7 +111,7 @@ SUIT_CONFIG = {
     'MENU': ({'label': u'用户管理', 'app': 'auth',
               'models': ('auth.User', 'auth.Group')},
              {'label': u'博客', 'app': 'blogs',
-              'models': ('blogs.Blog','blogs.Category', 'blogs.Tag', 'blogs.Comment')},
+              'models': ('blogs.Blog','blogs.Category', 'blogs.Tag', 'blogs.Comment','blogs.Welcome')},
              ),
 }
 # Internationalization

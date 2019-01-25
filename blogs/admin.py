@@ -17,6 +17,11 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = ('title',)
     list_filter = ('category','tag','pub')
 
+class WelcomeAdmin(admin.ModelAdmin):
+    list_display = ('title','content','status')
+    search_fields = ('title',)
+    list_filter = ('title','status')
+
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('blog','name','content','pub')
     search_fields = ('blog',)
@@ -25,4 +30,5 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Tag,TagAdmin)
 admin.site.register(Blog,BlogAdmin)
+admin.site.register(Welcome,WelcomeAdmin)
 admin.site.register(Comment,CommentAdmin)

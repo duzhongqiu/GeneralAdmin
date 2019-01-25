@@ -1,4 +1,5 @@
 from django.db import models
+from django import forms
 from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):
@@ -36,6 +37,21 @@ class Blog(models.Model):
     class Meta:
         verbose_name = '博客'
         verbose_name_plural = '博客'
+
+class Welcome(models.Model):
+    status_choice = (
+        ('line', '是'),
+        ('notline', '否'),
+    )
+    title = models.CharField('标题',max_length=32)
+    content = models.CharField('内容',max_length=64)
+    status = models.CharField('上线',choices=status_choice,max_length=8)
+
+    def __str__(self):
+        return self.title
+    class Meta:
+        verbose_name = '欢迎语'
+        verbose_name_plural = '欢迎语'
 
 class Comment(models.Model):
     #评论
