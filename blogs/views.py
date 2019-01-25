@@ -8,5 +8,5 @@ def index(request):
     datadict = {
         'welcomes': welcomes,
     }
-    print(datadict)
+    #print(datadict)
     return render(request, 'blogs/index.html',datadict)
