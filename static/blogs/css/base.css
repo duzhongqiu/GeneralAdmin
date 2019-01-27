@@ -2,5 +2,21 @@
 body{
     padding-top:40px;
     font-family: 宋体;
-    background-color: #f8fff7;
+    background-image: url("../../images/blogs/banner.jpeg");
+}
+li a{
+    color: black;
+}
+
+.footer{
+    margin-top: 15%;
+    width:100%;
+    height:20px;
+    background-color: #dbdbdb;
+    position:fixed;
+    bottom:0px;
+}
+.footer p{
+    margin-bottom: 0;
+    color: #9d9d9d;
 }

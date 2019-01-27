@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blogs',
     'ckeditor',
     'ckeditor_uploader',
+    'resume',
 ]
 
 MIDDLEWARE = [
@@ -112,6 +113,8 @@ SUIT_CONFIG = {
               'models': ('auth.User', 'auth.Group')},
              {'label': u'博客', 'app': 'blogs',
               'models': ('blogs.Blog','blogs.Category', 'blogs.Tag', 'blogs.Comment','blogs.Welcome')},
+             {'label': u'个人简历', 'app': 'resume',
+              'models': ('resume.Basicinfo','resume.Education','resume.Worklist','resume.Thing','resume.Skill','resume.Evaluation')},
              ),
 }
 # Internationalization

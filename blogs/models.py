@@ -1,5 +1,4 @@
 from django.db import models
-from django import forms
 from ckeditor_uploader.fields import RichTextUploadingField
 
 class Category(models.Model):

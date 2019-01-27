@@ -5,56 +5,10 @@
     <link rel="stylesheet" href="{%static "blogs/css/index.css" %}">
 {% endblock %}
 {% block content %}
-    <div class="jumbotron text-center">
-    {% for welcome in welcomes %}
-        <h2>{{ welcome.title }}</h2><br/>
-        <p>{{ welcome.content }}</p>
-    {% endfor %}
+{% for welcome in welcomes %}
+    <div class="welcome text-center">
+        <h2 id="blogtitle">{{ welcome.title }}</h2 id="blogtitle">
+        <p id="blogicon">{{ welcome.content }}</p>
     </div>
-    <div class="container">
-        <div class="row" >
-            <div class="col-sm-8">
-                <div class="title">
-                    <a href="#"><h2>杀傻大大快乐撒好啥都杀傻大大快乐撒好啥都杀傻大大快乐撒好啥都为我</h2></a>
-                    <span class="label label-primary">【原创】</span>
-                    <span class="label label-success" >【社会】</span>
-                    <span class="label label-warning" >【军事,大陆,中国,美国】</span>
-                    <span class="label label-info" >【2019年1月21日】</span>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src={%static "images/blogs/bgimg.jpg" %} alt="通用的占位符缩略图">
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="title">
-                    <a href="#"><h2>台军官员：我们有“航母杀手” 网友酸：嗯，见识过打渔船的威力</h2></a>
-                    <span class="label label-primary">【原创】</span>
-                    <span class="label label-success" >【社会】</span>
-                    <span class="label label-warning" >【军事,大陆】</span>
-                    <span class="label label-info" >【2019年1月21日】</span>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src={%static "images/blogs/bgimg.jpg" %} alt="通用的占位符缩略图">
-                    </a>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="title">
-                    <a href="#"><h2>台军官员：我们有“航母杀手” 网友酸：嗯，见识过打渔船的威力</h2></a>
-                    <span class="label label-primary">【原创】</span>
-                    <span class="label label-success" >【社会】</span>
-                    <span class="label label-warning" >【军事,大陆】</span>
-                    <span class="label label-info" >【2019年1月21日】</span>
-                </div>
-                <div class="col-sm-6 col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src={%static "images/blogs/bgimg.jpg" %} alt="通用的占位符缩略图">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+{% endfor %}
 {% endblock %}
