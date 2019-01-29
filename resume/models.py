@@ -58,7 +58,7 @@ class Education(models.Model):
     unified = models.CharField('是否统招',max_length=32,choices=unifieds)
     stating = models.DateField('就读时间')
     ending = models.DateField('毕业时间')
-    petname = models.ForeignKey(Basicinfo,verbose_name='姓名',on_delete=models.CASCADE)
+    petname = models.ForeignKey(Basicinfo,verbose_name='归属用户',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.institution
@@ -82,7 +82,7 @@ class Worklist(models.Model):
     duties = RichTextUploadingField('职责业绩',null=True, blank=True)
     entertime = models.DateField('入职日期')
     leavetime = models.DateField('离职日期',null=True, blank=True)
-    petname = models.ForeignKey(Basicinfo, verbose_name='姓名',on_delete=models.CASCADE)
+    petname = models.ForeignKey(Basicinfo, verbose_name='归属用户',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.company
@@ -100,7 +100,7 @@ class Thing(models.Model):
     thingperformance = RichTextUploadingField('项目业绩', null=True, blank=True)
     entertime = models.DateField('开始日期')
     leavetime = models.DateField('结束日期',null=True, blank=True)
-    workname = models.ForeignKey(Worklist,verbose_name='公司',on_delete=models.CASCADE)
+    workname = models.ForeignKey(Worklist,verbose_name='归属公司',on_delete=models.CASCADE)
 
     def __str__(self):
         return self.thingname
@@ -110,7 +110,7 @@ class Thing(models.Model):
         verbose_name_plural = '项目经历'
 
 class Skill(models.Model):
-    petname = models.OneToOneField(Basicinfo, verbose_name='姓名',on_delete=models.CASCADE)
+    petname = models.OneToOneField(Basicinfo, verbose_name='归属用户',on_delete=models.CASCADE)
     skills = RichTextUploadingField('技能特长', null=True, blank=True)
 
     def __str__(self):
@@ -121,7 +121,7 @@ class Skill(models.Model):
         verbose_name_plural = '技能特长'
 
 class Evaluation(models.Model):
-    petname = models.OneToOneField(Basicinfo, verbose_name='姓名',on_delete=models.CASCADE)
+    petname = models.OneToOneField(Basicinfo, verbose_name='归属用户',on_delete=models.CASCADE)
     evaluations = RichTextUploadingField('自我评价', null=True, blank=True)
 
     def __str__(self):

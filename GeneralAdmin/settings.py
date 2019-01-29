@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'resume',
+    'proxy',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +116,8 @@ SUIT_CONFIG = {
               'models': ('blogs.Blog','blogs.Category', 'blogs.Tag', 'blogs.Comment','blogs.Welcome')},
              {'label': u'个人简历', 'app': 'resume',
               'models': ('resume.Basicinfo','resume.Education','resume.Worklist','resume.Thing','resume.Skill','resume.Evaluation')},
+             {'label': u'代理IP', 'app': 'proxy',
+              'models': ('proxy.AgentList',)},
              ),
 }
 # Internationalization
