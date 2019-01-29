@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'resume',
     'proxy',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CKEDITOR_UPLOAD_PATH = 'upload/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
+
+#定时任务
+CRONJOBS = [
+    ('*/10 * * * *', 'proxy.timing.getproxy')
+]

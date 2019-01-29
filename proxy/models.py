@@ -13,6 +13,7 @@ class AgentList(models.Model):
     proxylink = models.CharField('连接速度', max_length=32)
     proxylive = models.CharField('存活时间', max_length=32)
     proxycheck = models.CharField('验证时间', max_length=32)
+    pub = models.DateTimeField('爬取时间', auto_now_add=True)
 
     def __str__(self):
         return self.proxyip
