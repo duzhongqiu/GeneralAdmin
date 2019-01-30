@@ -3,38 +3,23 @@
 #@File: timing.py
 #@Author:duzhongqiu
 #@time: 2019-01-29 15:35
+from django.conf import settings
+import smtplib
+from email.mime.text import MIMEText
+from email.header import Header
 
-from . import models
-import requests
-from bs4 import BeautifulSoup
 
-def getproxy():
-	url = 'https://www.xicidaili.com/nn/'
-	headers = {'User-Agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+def sendemail():
+    message = MIMEText('Django 后台邮件', 'plain', 'utf-8')
+    message['From'] = Header("email sender", 'utf-8')
+    message['To'] = Header("email receiver", 'utf-8')
 
-	response = requests.get(url,headers=headers)
-	webtext = BeautifulSoup(response.text,'lxml')
-	trsoups = webtext.find_all('tr')
-	for num in range(1,len(trsoups)):
-		tdtext = BeautifulSoup(str(trsoups[num]),'lxml')
-		tdsoups = tdtext.find_all('td')
-		proxyip = tdsoups[1].text
-		proxyport = tdsoups[2].text
-		proxyaddress = tdsoups[3].text.replace('\n','')
-		proxyhide = tdsoups[4].text
-		proxytype = tdsoups[5].text
-		proxylive = tdsoups[8].text
-		proxycheck = tdsoups[9].text
-		speedsoups = BeautifulSoup(str(tdsoups[6]),'lxml')
-		speedsoup = speedsoups.find('div',class_='bar')
-		proxyspeed = speedsoup.get('title')
-		linksoups = BeautifulSoup(str(tdsoups[7]),'lxml')
-		linksoup = linksoups.find('div',class_='bar')
-		proxylink = linksoup.get('title')
-		selectproxy = models.AgentList.objects.filter(proxyip=proxyip)
-		if selectproxy:
-			models.AgentList.objects.filter(proxyip=proxyip).update(proxyspeed=proxyspeed,proxylink=proxylink,proxylive=proxylive,proxycheck=proxycheck)
-		else:
-			obj = models.AgentList(proxyip=proxyip,proxyport=proxyport,proxyaddress=proxyaddress,proxyhide=proxyhide,proxytype=proxytype,proxyspeed=proxyspeed,proxylink=proxylink,proxylive=proxylive,proxycheck=proxycheck)
-			obj.save()
-
+    subject = 'Django 后台自动邮件发送测试...'
+    message['Subject'] = Header(subject, 'utf-8')
+    try:
+        smtpObj = smtplib.SMTP()
+        smtpObj.connect(settings.MAIL_HOST, 25)  # 25 为 SMTP 端口号
+        smtpObj.login(settings.MAIL_USER,settings.MAIL_PASS)
+        smtpObj.sendmail(settings.SENDER,settings.RECEIVERS, message.as_string())
+    except smtplib.SMTPException:
+        pass
