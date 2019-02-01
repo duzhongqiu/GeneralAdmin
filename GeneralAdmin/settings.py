@@ -151,8 +151,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CKEDITOR_UPLOAD_PATH = 'upload/'
 CKEDITOR_IMAGE_BACKEND = 'pillow'
 
+#爬虫headers
+HEADERS = {'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36'}
+
 #定时任务
-CRONJOBS = [('*/1 * * * *', 'proxy.timing.sendemail','>/Users/zqd/PycharmProjects/GeneralAdmin/log/cronjobs.log')]
+CRONJOBS = [
+#            ('*/30 * * * *', 'proxy.cronjobs.sendemail','>/Users/zqd/PycharmProjects/GeneralAdmin/log/cronjobs.log'),
+            ('*/50 * * * *', 'proxy.cronjobs.getproxy', '> /Users/zqd/PycharmProjects/GeneralAdmin/log/cronjobs.log'),
+            ('*/50 * * * *', 'blogs.cronjobs.getnews', '> /Users/zqd/PycharmProjects/GeneralAdmin/log/cronjobs.log')]
 
 #邮件设置
 # 第三方 SMTP 服务
